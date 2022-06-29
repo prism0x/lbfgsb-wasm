@@ -1,6 +1,6 @@
-FC = flang-new
+FC = gfortran
 
-FFLAGS = -fc1 -O -Werror
+FFLAGS = -O -Wall -fbounds-check -g -Wno-uninitialized
 
 DRIVER1_77 = driver1.f
 DRIVER2_77 = driver2.f
@@ -35,5 +35,3 @@ lbfgsb_90_2 : $(DRIVER2_90) $(LBFGSB) $(LINPACK) $(BLAS) $(TIMER)
 
 lbfgsb_90_3 : $(DRIVER3_90) $(LBFGSB) $(LINPACK) $(BLAS) $(TIMER)
 	$(FC) $(FFLAGS) $(DRIVER3_90) $(LBFGSB) $(LINPACK) $(BLAS) $(TIMER) -o x.lbfgsb_90_3
-
- cmake -G Ninja -DLLVM_ENABLE_PROJECTS='flang;clang;lld;mlir' -DFLANG_ENABLE_WERROR=On -DLLVM_ENABLE_ASSERTIONS=ON -DLLVM_TARGETS_TO_BUILD='host;wasm32;wasm64' -DLLVM_LIT_ARGS=-v -DLLVM_ENABLE_RUNTIMES="compiler-rt" -DCMAKE_BUILD_TYPE=Release  ../llvm
