@@ -36,6 +36,7 @@ c
 
       stop
       end
+
       subroutine timestamp ( )
 
 c*********************************************************************72
@@ -79,6 +80,7 @@ c
 
       implicit none
       integer a, b, c
+      ! write(*,*) "Hello from Fortran!"
       c = a * b
       return
       end
